@@ -486,7 +486,7 @@ function Precio() {
 
         <div
           style={{
-            fontSize: 'clamp(3.5rem, 16vw, 7rem)',
+            fontSize: 'clamp(2.2rem, 8.5vw, 6.5rem)',
             fontWeight: 900,
             color: Y,
             lineHeight: 1,
