@@ -5,8 +5,8 @@ import CRM from './CRM'
 const CONFIG = {
   marca: 'Renault',
   modelo: 'Boreal',
-  anio: '2025',
-  precio: '$52.900.000',
+  anio: '2026',
+  precio: '$50.000.000',
   precioDesde: 'desde',
   whatsapp: 'https://wa.me/5492226512253',
   whatsappMsg: '¡Hola, Romina! Vi el Renault Boreal en tu página y me interesa. ¿Podés darme más info y opciones de financiación?',
@@ -449,53 +449,62 @@ function Precio() {
         style={{
           maxWidth: 900,
           margin: '0 auto',
-          background: CARD,
-          border: `1px solid ${BORDER}`,
-          borderRadius: 20,
-          padding: 'clamp(28px, 5vw, 48px)',
+          background: 'linear-gradient(145deg, #0f0f0f 0%, #1a1500 50%, #0f0f0f 100%)',
+          border: `1px solid rgba(255,204,0,0.35)`,
+          borderRadius: 24,
+          padding: 'clamp(32px, 6vw, 64px)',
           textAlign: 'center',
+          boxShadow: '0 0 80px rgba(255,204,0,0.08), inset 0 0 80px rgba(255,204,0,0.03)',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        {/* Neon top line */}
+        <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: 2, background: `linear-gradient(to right, transparent, ${Y}, transparent)`, borderRadius: 2 }} />
+
         <div
           style={{
             display: 'inline-flex',
             alignItems: 'center',
-            gap: 8,
-            background: 'rgba(255,204,0,0.1)',
-            border: '1px solid rgba(255,204,0,0.3)',
+            gap: 10,
+            background: 'rgba(255,204,0,0.12)',
+            border: '1px solid rgba(255,204,0,0.4)',
             borderRadius: 100,
-            padding: '6px 16px',
-            marginBottom: 24,
+            padding: '8px 20px',
+            marginBottom: 32,
+            boxShadow: '0 0 20px rgba(255,204,0,0.15)',
           }}
         >
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: Y, animation: 'pulse 1.5s infinite', display: 'inline-block' }} />
-          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: Y, letterSpacing: '0.08em' }}>
-            OFERTA DE LANZAMIENTO · TASA 0%
+          <span style={{ width: 9, height: 9, borderRadius: '50%', background: Y, animation: 'pulse 1.5s infinite', display: 'inline-block', boxShadow: `0 0 8px ${Y}` }} />
+          <span style={{ fontSize: '0.78rem', fontWeight: 800, color: Y, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            Oferta de lanzamiento · Tasa 0%
           </span>
         </div>
 
-        <div style={{ fontSize: '0.9rem', color: MUTED, marginBottom: 8 }}>
+        <div style={{ fontSize: '0.9rem', color: MUTED, marginBottom: 12, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
           {CONFIG.precioDesde}
         </div>
 
         <div
           style={{
-            fontSize: 'clamp(3rem, 12vw, 5.5rem)',
+            fontSize: 'clamp(3.5rem, 16vw, 7rem)',
             fontWeight: 900,
             color: Y,
             lineHeight: 1,
-            marginBottom: 8,
-            letterSpacing: '-0.02em',
+            marginBottom: 16,
+            letterSpacing: '-0.03em',
+            textShadow: `0 0 30px rgba(255,204,0,0.6), 0 0 60px rgba(255,204,0,0.3), 0 0 100px rgba(255,204,0,0.15)`,
           }}
         >
           {CONFIG.precio}
         </div>
 
-        <p style={{ color: MUTED, fontSize: '0.88rem', marginBottom: 32 }}>
-          Precio de lista oficial. Consultá tu plan de financiación a tasa 0%.
+        <p style={{ color: '#aaa', fontSize: '0.92rem', marginBottom: 40, lineHeight: 1.6 }}>
+          Precio de lista oficial Renault Argentina.<br />
+          Consultá tu plan de financiación a tasa 0%.
         </p>
 
-        <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 36 }}>
+        <div style={{ display: 'flex', gap: 10, justifyContent: 'center', marginBottom: 44 }}>
           {[
             { v: time.h, l: 'horas' },
             { v: time.m, l: 'min' },
@@ -503,29 +512,50 @@ function Precio() {
           ].map(({ v, l }) => (
             <div
               key={l}
-              style={{ background: '#1a1a1a', border: `1px solid ${BORDER}`, borderRadius: 10, padding: '12px 18px', minWidth: 68 }}
+              style={{
+                background: 'rgba(0,0,0,0.6)',
+                border: `1px solid rgba(255,204,0,0.25)`,
+                borderRadius: 12,
+                padding: '14px 20px',
+                minWidth: 72,
+                boxShadow: '0 0 20px rgba(255,204,0,0.05)',
+              }}
             >
-              <div style={{ fontFamily: 'monospace', fontSize: '1.8rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{v}</div>
-              <div style={{ fontSize: '0.6rem', color: MUTED, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{l}</div>
+              <div style={{ fontFamily: 'monospace', fontSize: '2rem', fontWeight: 900, color: Y, lineHeight: 1, textShadow: `0 0 15px rgba(255,204,0,0.5)` }}>{v}</div>
+              <div style={{ fontSize: '0.6rem', color: MUTED, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 6 }}>{l}</div>
             </div>
           ))}
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={s.btnWa}>
-            <WaIcon size={22} color="#fff" />
+          <a
+            href={WA_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              ...s.btnWa,
+              padding: '18px 40px',
+              fontSize: '1.05rem',
+              borderRadius: 14,
+              boxShadow: '0 4px 32px rgba(37,211,102,0.4)',
+            }}
+          >
+            <WaIcon size={24} color="#fff" />
             Quiero mi Boreal — Consultar ahora
           </a>
           <p style={{ fontSize: '0.78rem', color: MUTED }}>
             Respondemos en minutos · Financiación sin entrada
           </p>
         </div>
+
+        {/* Neon bottom line */}
+        <div style={{ position: 'absolute', bottom: 0, left: '20%', right: '20%', height: 1, background: `linear-gradient(to right, transparent, rgba(255,204,0,0.4), transparent)` }} />
       </div>
 
       <style>{`
         @keyframes pulse {
           0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
+          50% { opacity: 0.3; }
         }
       `}</style>
     </section>
@@ -564,7 +594,7 @@ function Footer({ onCRM }) {
           onClick={handleSecretClick}
           style={{ fontSize: '0.72rem', color: '#444', marginTop: 32, cursor: 'default', userSelect: 'none' }}
         >
-          © 2025 · Renault Petraglia Cañuelas · {CONFIG.modelo} {CONFIG.anio}
+          © 2026 · Renault Petraglia Cañuelas · {CONFIG.modelo} {CONFIG.anio}
         </p>
       </div>
     </footer>
