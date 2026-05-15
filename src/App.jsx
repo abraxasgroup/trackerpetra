@@ -4,30 +4,30 @@ import CRM from './CRM'
 // ─── CONFIGURACIÓN — editá estos datos ───────────────────────────────────────
 const CONFIG = {
   marca: 'Renault',
-  modelo: 'Kwid Outsider',
-  anio: '2022',
-  km: '32.000',
-  precio: '$11.500.000',
-  precioAnterior: '$12.800.000',
-  whatsapp: 'https://wa.me/5491155550000',
-  whatsappMsg: '¡Hola! Vi tu publicación del Renault Kwid Outsider 2022 y me interesa. ¿Podés darme más info?',
+  modelo: 'Boreal',
+  anio: '2025',
+  precio: '$52.900.000',
+  precioDesde: 'desde',
+  whatsapp: 'https://wa.me/5492226512253',
+  whatsappMsg: '¡Hola, Romina! Vi el Renault Boreal en tu página y me interesa. ¿Podés darme más info y opciones de financiación?',
   vendedora: 'Romina Petraglia',
   zona: 'Cañuelas, Buenos Aires',
-  // Imágenes en /public — renombrá tus fotos así:
+  // Imágenes: guardá las fotos del Boreal en la carpeta public/ con estos nombres
   imagenes: [
     '/auto1.jpg',
     '/auto2.jpg',
     '/auto3.jpg',
     '/auto4.jpg',
     '/auto5.jpg',
+    '/auto6.jpg',
   ],
   beneficios: [
-    { icon: '📋', titulo: 'Papeles al día', desc: 'VTV vigente, patente sin deuda, listo para transferir hoy.' },
-    { icon: '🔧', titulo: 'Impecable mecánica', desc: 'Service al día, motor y caja en perfecto estado.' },
-    { icon: '✨', titulo: 'Interior como nuevo', desc: 'Tapizado sin manchas, aire acondicionado frío.' },
-    { icon: '🛡️', titulo: 'Sin choques', desc: 'Carrocería original, sin golpes ni pintura.' },
-    { icon: '⛽', titulo: 'Nafta y GNC', desc: 'Doble combustible. Ahorrás desde el primer día.' },
-    { icon: '🚗', titulo: 'Único dueño', desc: 'Siempre guardado en cochera, uso particular.' },
+    { icon: '🌅', titulo: 'Techo panorámico', desc: 'Amplio techo de cristal que inunda el habitáculo de luz. Disfrutá cada viaje como si no hubiera techo.' },
+    { icon: '📱', titulo: 'Cockpit 100% digital', desc: 'Panel de instrumentos digital y multimedia de 9" con Android Auto y Apple CarPlay integrado.' },
+    { icon: '🛡️', titulo: 'Human First Program', desc: 'ADAS de nivel 2: mantenimiento de carril, frenado autónomo, alerta de punto ciego y control de crucero adaptativo.' },
+    { icon: '💡', titulo: 'Iluminación ambient', desc: 'Ambiente interior premium con iluminación LED de colores en todo el habitáculo.' },
+    { icon: '🚗', titulo: 'Motor Turbo 131 CV', desc: 'Motor 1.3 TCe con transmisión CVT. Potencia, eficiencia y conducción sin compromisos.' },
+    { icon: '✦', titulo: 'Financiación a tasa 0%', desc: 'Accedé al Boreal hoy con el plan de financiación especial a tasa 0%. Consultanos sin compromiso.' },
   ],
 }
 // ─────────────────────────────────────────────────────────────────────────────
@@ -40,7 +40,6 @@ const CARD = '#141414'
 const BORDER = '#222'
 const MUTED = '#888'
 
-// ── Estilos reutilizables ────────────────────────────────────────────────────
 const s = {
   tag: {
     display: 'inline-block',
@@ -111,16 +110,13 @@ const s = {
   },
 }
 
-// ── Componente FAB WhatsApp ──────────────────────────────────────────────────
 function WhatsAppFAB() {
   const [visible, setVisible] = useState(false)
-
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
   return (
     <a
       href={WA_LINK}
@@ -151,7 +147,6 @@ function WhatsAppFAB() {
   )
 }
 
-// ── SVG WhatsApp ─────────────────────────────────────────────────────────────
 function WaIcon({ size = 24, color = '#fff' }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
@@ -160,7 +155,6 @@ function WaIcon({ size = 24, color = '#fff' }) {
   )
 }
 
-// ── HERO ─────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
     <section
@@ -173,34 +167,20 @@ function Hero() {
         overflow: 'hidden',
       }}
     >
-      {/* Imagen de fondo */}
       <img
         src={CONFIG.imagenes[0]}
         alt={`${CONFIG.marca} ${CONFIG.modelo}`}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: 'center',
-        }}
-        onError={(e) => {
-          e.target.style.display = 'none'
-        }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        onError={(e) => { e.target.style.display = 'none' }}
       />
-
-      {/* Gradiente overlay */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.92) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.92) 100%)',
         }}
       />
 
-      {/* Badge superior */}
       <div
         style={{
           position: 'absolute',
@@ -218,10 +198,9 @@ function Hero() {
           textTransform: 'uppercase',
         }}
       >
-        🔥 OPORTUNIDAD ÚNICA
+        ✦ NUEVO 2025
       </div>
 
-      {/* Contenido */}
       <div
         style={{
           position: 'relative',
@@ -233,7 +212,7 @@ function Hero() {
         }}
       >
         <div style={s.tag}>
-          {CONFIG.anio} · {CONFIG.km} km · {CONFIG.zona}
+          SUV · {CONFIG.anio} · 0 km · {CONFIG.zona}
         </div>
 
         <h1
@@ -260,17 +239,17 @@ function Hero() {
             maxWidth: 480,
           }}
         >
-          Listo para transferir hoy. Papeles al día, impecable estado, sin
-          choques. El auto que buscabas al mejor precio del mercado.
+          El SUV más equipado de Renault ya llegó a Cañuelas. Techo panorámico,
+          cockpit digital, tecnología ADAS y financiación a tasa 0%.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-start' }}>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={s.btnWa}>
             <WaIcon size={22} color="#fff" />
-            Consultar por WhatsApp
+            Consultá tu financiación
           </a>
           <a href="#galeria" style={s.btnSecondary}>
-            📸 Ver todas las fotos
+            📸 Ver el auto
           </a>
         </div>
       </div>
@@ -278,31 +257,16 @@ function Hero() {
   )
 }
 
-// ── SPECS BAR ────────────────────────────────────────────────────────────────
 function SpecsBar() {
   const specs = [
-    { label: 'Año', value: CONFIG.anio },
-    { label: 'Kilómetros', value: CONFIG.km + ' km' },
-    { label: 'Combustible', value: 'Nafta / GNC' },
-    { label: 'Transmisión', value: 'Manual' },
+    { label: 'Motor', value: '1.3 Turbo' },
+    { label: 'Potencia', value: '131 CV' },
+    { label: 'Transmisión', value: 'CVT' },
+    { label: 'Garantía', value: '3 años' },
   ]
-
   return (
-    <div
-      style={{
-        background: CARD,
-        borderTop: `1px solid ${BORDER}`,
-        borderBottom: `1px solid ${BORDER}`,
-      }}
-    >
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          maxWidth: 900,
-          margin: '0 auto',
-        }}
-      >
+    <div style={{ background: CARD, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', maxWidth: 900, margin: '0 auto' }}>
         {specs.map((sp, i) => (
           <div
             key={sp.label}
@@ -313,19 +277,8 @@ function SpecsBar() {
               textAlign: 'center',
             }}
           >
-            <div
-              style={{
-                fontSize: '1.1rem',
-                fontWeight: 800,
-                color: '#fff',
-                marginBottom: 4,
-              }}
-            >
-              {sp.value}
-            </div>
-            <div style={{ fontSize: '0.7rem', color: MUTED, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-              {sp.label}
-            </div>
+            <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', marginBottom: 4 }}>{sp.value}</div>
+            <div style={{ fontSize: '0.7rem', color: MUTED, textTransform: 'uppercase', letterSpacing: '0.1em' }}>{sp.label}</div>
           </div>
         ))}
       </div>
@@ -333,24 +286,16 @@ function SpecsBar() {
   )
 }
 
-// ── BENEFICIOS ───────────────────────────────────────────────────────────────
 function Beneficios() {
   return (
     <section style={{ ...s.section, paddingBottom: 48 }}>
-      <div style={s.tag}>✦ Por qué comprar este auto</div>
-      <h2 style={s.sectionTitle}>Todo lo que necesitás saber</h2>
+      <div style={s.tag}>✦ Lo que hace al Boreal único</div>
+      <h2 style={s.sectionTitle}>Tecnología, diseño y confort</h2>
       <p style={s.sectionSub}>
-        Sin sorpresas. Este auto está auditado y listo para entregar. Revisá cada
-        detalle antes de contactarnos.
+        Cada detalle del Boreal fue pensado para que manejes diferente. Descubrí
+        por qué es el SUV que más se habla este año.
       </p>
-
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-          gap: 16,
-        }}
-      >
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 16 }}>
         {CONFIG.beneficios.map((b) => (
           <div
             key={b.titulo}
@@ -364,23 +309,10 @@ function Beneficios() {
               alignItems: 'flex-start',
             }}
           >
-            <span style={{ fontSize: '1.8rem', lineHeight: 1, flexShrink: 0 }}>
-              {b.icon}
-            </span>
+            <span style={{ fontSize: '1.8rem', lineHeight: 1, flexShrink: 0 }}>{b.icon}</span>
             <div>
-              <div
-                style={{
-                  fontWeight: 700,
-                  fontSize: '0.95rem',
-                  color: '#fff',
-                  marginBottom: 4,
-                }}
-              >
-                {b.titulo}
-              </div>
-              <div style={{ fontSize: '0.82rem', color: MUTED, lineHeight: 1.55 }}>
-                {b.desc}
-              </div>
+              <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#fff', marginBottom: 4 }}>{b.titulo}</div>
+              <div style={{ fontSize: '0.82rem', color: MUTED, lineHeight: 1.55 }}>{b.desc}</div>
             </div>
           </div>
         ))}
@@ -389,35 +321,24 @@ function Beneficios() {
   )
 }
 
-// ── GALERIA ──────────────────────────────────────────────────────────────────
 function Galeria() {
   const [selected, setSelected] = useState(null)
+  const visibles = CONFIG.imagenes
 
   return (
     <section
       id="galeria"
-      style={{
-        background: CARD,
-        borderTop: `1px solid ${BORDER}`,
-        borderBottom: `1px solid ${BORDER}`,
-      }}
+      style={{ background: CARD, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
     >
       <div style={s.section}>
         <div style={s.tag}>✦ Galería</div>
-        <h2 style={s.sectionTitle}>Fotos reales del auto</h2>
+        <h2 style={s.sectionTitle}>El Boreal de cerca</h2>
         <p style={s.sectionSub}>
-          Lo que ves es lo que recibís. Sin filtros, sin retoques.
+          Las fotos reales del auto. Vení a verlo y hacer el test drive en Cañuelas.
         </p>
 
-        {/* Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: 8,
-          }}
-        >
-          {CONFIG.imagenes.map((src, i) => (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+          {visibles.map((src, i) => (
             <div
               key={i}
               onClick={() => setSelected(i)}
@@ -433,19 +354,11 @@ function Galeria() {
             >
               <img
                 src={src}
-                alt={`Foto ${i + 1}`}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transition: 'transform 0.3s',
-                }}
+                alt={`Boreal foto ${i + 1}`}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s' }}
                 onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
                 onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                onError={(e) => {
-                  e.target.parentElement.style.background = '#1a1a1a'
-                  e.target.style.display = 'none'
-                }}
+                onError={(e) => { e.target.parentElement.style.background = '#1a1a1a'; e.target.style.display = 'none' }}
               />
               <div
                 style={{
@@ -461,14 +374,13 @@ function Galeria() {
                   letterSpacing: '0.06em',
                 }}
               >
-                {i + 1}/{CONFIG.imagenes.length}
+                {i + 1}/{visibles.length}
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Lightbox */}
       {selected !== null && (
         <div
           onClick={() => setSelected(null)}
@@ -484,81 +396,33 @@ function Galeria() {
           }}
         >
           <img
-            src={CONFIG.imagenes[selected]}
-            alt={`Foto ${selected + 1}`}
-            style={{
-              maxWidth: '95vw',
-              maxHeight: '90vh',
-              borderRadius: 12,
-              objectFit: 'contain',
-            }}
+            src={visibles[selected]}
+            alt={`Boreal foto ${selected + 1}`}
+            style={{ maxWidth: '95vw', maxHeight: '90vh', borderRadius: 12, objectFit: 'contain' }}
             onClick={(e) => e.stopPropagation()}
           />
-          {/* Prev / Next */}
           {selected > 0 && (
             <button
               onClick={(e) => { e.stopPropagation(); setSelected(selected - 1) }}
-              style={{
-                position: 'absolute',
-                left: 12,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'rgba(255,255,255,0.1)',
-                border: 'none',
-                color: '#fff',
-                fontSize: '1.6rem',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-              }}
-            >
-              ‹
-            </button>
+              style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '1.6rem', width: 48, height: 48, borderRadius: '50%' }}
+            >‹</button>
           )}
-          {selected < CONFIG.imagenes.length - 1 && (
+          {selected < visibles.length - 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); setSelected(selected + 1) }}
-              style={{
-                position: 'absolute',
-                right: 12,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'rgba(255,255,255,0.1)',
-                border: 'none',
-                color: '#fff',
-                fontSize: '1.6rem',
-                width: 48,
-                height: 48,
-                borderRadius: '50%',
-              }}
-            >
-              ›
-            </button>
+              style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '1.6rem', width: 48, height: 48, borderRadius: '50%' }}
+            >›</button>
           )}
           <button
             onClick={() => setSelected(null)}
-            style={{
-              position: 'absolute',
-              top: 12,
-              right: 12,
-              background: 'rgba(255,255,255,0.1)',
-              border: 'none',
-              color: '#fff',
-              fontSize: '1.2rem',
-              width: 40,
-              height: 40,
-              borderRadius: '50%',
-            }}
-          >
-            ✕
-          </button>
+            style={{ position: 'absolute', top: 12, right: 12, background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '1.2rem', width: 40, height: 40, borderRadius: '50%' }}
+          >✕</button>
         </div>
       )}
     </section>
   )
 }
 
-// ── PRECIO ───────────────────────────────────────────────────────────────────
 function Precio() {
   const [time, setTime] = useState({ h: '23', m: '59', s: '59' })
 
@@ -592,44 +456,26 @@ function Precio() {
           textAlign: 'center',
         }}
       >
-        {/* Urgencia */}
         <div
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: 8,
-            background: 'rgba(255,77,77,0.1)',
-            border: '1px solid rgba(255,77,77,0.3)',
+            background: 'rgba(255,204,0,0.1)',
+            border: '1px solid rgba(255,204,0,0.3)',
             borderRadius: 100,
             padding: '6px 16px',
             marginBottom: 24,
           }}
         >
-          <span
-            style={{
-              width: 8,
-              height: 8,
-              borderRadius: '50%',
-              background: '#ff4d4d',
-              animation: 'pulse 1.5s infinite',
-            }}
-          />
-          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#ff4d4d', letterSpacing: '0.08em' }}>
-            PRECIO VÁLIDO POR HOY
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: Y, animation: 'pulse 1.5s infinite', display: 'inline-block' }} />
+          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: Y, letterSpacing: '0.08em' }}>
+            OFERTA DE LANZAMIENTO · TASA 0%
           </span>
         </div>
 
-        <div style={{ marginBottom: 8 }}>
-          <span
-            style={{
-              fontSize: '1rem',
-              color: MUTED,
-              textDecoration: 'line-through',
-              marginRight: 8,
-            }}
-          >
-            Antes: {CONFIG.precioAnterior}
-          </span>
+        <div style={{ fontSize: '0.9rem', color: MUTED, marginBottom: 8 }}>
+          {CONFIG.precioDesde}
         </div>
 
         <div
@@ -646,18 +492,10 @@ function Precio() {
         </div>
 
         <p style={{ color: MUTED, fontSize: '0.88rem', marginBottom: 32 }}>
-          Precio final. Sin gastos ocultos. Transferencia incluida.
+          Precio de lista oficial. Consultá tu plan de financiación a tasa 0%.
         </p>
 
-        {/* Countdown */}
-        <div
-          style={{
-            display: 'flex',
-            gap: 8,
-            justifyContent: 'center',
-            marginBottom: 36,
-          }}
-        >
+        <div style={{ display: 'flex', gap: 8, justifyContent: 'center', marginBottom: 36 }}>
           {[
             { v: time.h, l: 'horas' },
             { v: time.m, l: 'min' },
@@ -665,46 +503,21 @@ function Precio() {
           ].map(({ v, l }) => (
             <div
               key={l}
-              style={{
-                background: '#1a1a1a',
-                border: `1px solid ${BORDER}`,
-                borderRadius: 10,
-                padding: '12px 18px',
-                minWidth: 68,
-              }}
+              style={{ background: '#1a1a1a', border: `1px solid ${BORDER}`, borderRadius: 10, padding: '12px 18px', minWidth: 68 }}
             >
-              <div
-                style={{
-                  fontFamily: 'monospace',
-                  fontSize: '1.8rem',
-                  fontWeight: 800,
-                  color: '#fff',
-                  lineHeight: 1,
-                }}
-              >
-                {v}
-              </div>
-              <div style={{ fontSize: '0.6rem', color: MUTED, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>
-                {l}
-              </div>
+              <div style={{ fontFamily: 'monospace', fontSize: '1.8rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>{v}</div>
+              <div style={{ fontSize: '0.6rem', color: MUTED, textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{l}</div>
             </div>
           ))}
         </div>
 
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 12,
-            alignItems: 'center',
-          }}
-        >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={s.btnWa}>
             <WaIcon size={22} color="#fff" />
-            Quiero este auto — Consultar ahora
+            Quiero mi Boreal — Consultar ahora
           </a>
           <p style={{ fontSize: '0.78rem', color: MUTED }}>
-            Respondemos en minutos · Sin compromiso
+            Respondemos en minutos · Financiación sin entrada
           </p>
         </div>
       </div>
@@ -719,7 +532,6 @@ function Precio() {
   )
 }
 
-// ── CONTACTO / FOOTER ────────────────────────────────────────────────────────
 function Footer({ onCRM }) {
   const clicksRef = useRef(0)
   const timerRef = useRef(null)
@@ -736,54 +548,29 @@ function Footer({ onCRM }) {
   }
 
   return (
-    <footer
-      style={{
-        borderTop: `1px solid ${BORDER}`,
-        background: CARD,
-        padding: '40px 20px',
-        textAlign: 'center',
-      }}
-    >
+    <footer style={{ borderTop: `1px solid ${BORDER}`, background: CARD, padding: '40px 20px', textAlign: 'center' }}>
       <div style={{ maxWidth: 500, margin: '0 auto' }}>
-        <div
-          style={{
-            fontSize: '1.5rem',
-            fontWeight: 900,
-            color: '#fff',
-            marginBottom: 4,
-          }}
-        >
+        <div style={{ fontSize: '1.5rem', fontWeight: 900, color: '#fff', marginBottom: 4 }}>
           {CONFIG.vendedora}
         </div>
         <div style={{ fontSize: '0.85rem', color: MUTED, marginBottom: 24 }}>
-          Venta particular · {CONFIG.zona}
+          Ejecutiva de ventas · Renault Petraglia · {CONFIG.zona}
         </div>
-
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            ...s.btnWa,
-            margin: '0 auto',
-          }}
-        >
+        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{ ...s.btnWa, margin: '0 auto' }}>
           <WaIcon size={20} color="#fff" />
           Abrir WhatsApp
         </a>
-
         <p
           onClick={handleSecretClick}
           style={{ fontSize: '0.72rem', color: '#444', marginTop: 32, cursor: 'default', userSelect: 'none' }}
         >
-          © 2025 · Venta particular · {CONFIG.marca} {CONFIG.modelo} {CONFIG.anio}
+          © 2025 · Renault Petraglia Cañuelas · {CONFIG.modelo} {CONFIG.anio}
         </p>
       </div>
     </footer>
   )
 }
 
-// ── APP ROOT ─────────────────────────────────────────────────────────────────
 export default function App() {
   const [verCRM, setVerCRM] = useState(() =>
     new URLSearchParams(window.location.search).has('panel')
