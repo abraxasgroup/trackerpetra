@@ -12,14 +12,13 @@ const CONFIG = {
   whatsappMsg: '¡Hola, Romina! Vi el Renault Boreal en tu página y me interesa. ¿Podés darme más info y opciones de financiación?',
   vendedora: 'Romina Petraglia',
   zona: 'Cañuelas, Buenos Aires',
-  // Imágenes: guardá las fotos del Boreal en la carpeta public/ con estos nombres
   imagenes: [
-    '/auto1.jpg',
-    '/auto2.jpg',
-    '/auto3.jpg',
-    '/auto4.jpg',
-    '/auto5.jpg',
-    '/auto6.jpg',
+    'https://cdn.group.renault.com/ren/master/renault-new-cars/product-plans/rb3l4/reveal/latam/banner/new-home-page/renault-boreal-header-mobile-001.jpg',
+    'https://cdn.group.renault.com/ren/master/renault-new-cars/product-plans/rb3l4/reveal/latam/overview/renault-boreal-overview-006-desktop.jpg',
+    'https://cdn.group.renault.com/ren/master/renault-new-cars/product-plans/rb3l4/reveal/latam/overview/renault-boreal-overview-021-desktop.jpg',
+    'https://cdn.group.renault.com/ren/master/renault-new-cars/product-plans/rb3l4/reveal/latam/overview/renault-boreal-overview-030-desktop.jpg',
+    'https://cdn.group.renault.com/ren/master/renault-new-cars/product-plans/rb3l4/reveal/latam/overview/renault-boreal-overview-003-1-mobile.jpg',
+    'https://cdn.group.renault.com/ren/master/renault-new-cars/product-plans/rb3l4/reveal/latam/overview/renault-boreal-overview-007-mobile.jpg',
   ],
   beneficios: [
     { icon: '🌅', titulo: 'Techo panorámico', desc: 'Amplio techo de cristal que inunda el habitáculo de luz. Disfrutá cada viaje como si no hubiera techo.' },
